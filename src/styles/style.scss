@@ -1,0 +1,206 @@
+/* ===== Variables & helpers ===== */
+$font-stack: "Inter", "Helvetica Neue", Arial, sans-serif;
+$cta-size: 240px;
+$z-overlay: 999;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Reset / base ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: $font-stack;
+  -webkit-font-smoothing: antialiased;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ===== Orientation-lock overlay ===== */
+.orientation-lock {
+  @include flex-center;
+  position: fixed;
+  inset: 0;
+  background: #000000e6;
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.25rem;
+  z-index: $z-overlay;
+  transition: opacity 0.3s ease;
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* ===== Scene wrapper ===== */
+.scene {
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  &.is-active {
+    display: block;
+  }
+}
+
+/* ===== Scene 1: Intro ===== */
+.scene--intro {
+  .scene-intro__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .scene-intro__headline {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+  }
+}
+
+/* ===== Scene 2: Gallery ===== */
+.scene--gallery {
+  @include flex-center;
+  flex-direction: column;
+  position: relative;
+  padding: 10rem 1rem;
+
+  .swiper {
+    width: 90vw;
+    max-width: 480px;
+    overflow: hidden;
+    padding: 0;
+    margin: auto 0;
+  }
+
+  .swiper-slide {
+    @include flex-center;
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 60vh;
+      object-fit: contain;
+    }
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: #000 !important;
+    width: 36px;
+    height: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+  .swiper-button-prev {
+    left: 0;
+  }
+  .swiper-button-next {
+    right: 0;
+  }
+
+  #cta {
+    position: absolute;
+    bottom: 14vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: $cta-size;
+    height: $cta-size;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 4;
+  }
+
+  .gallery-shadow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+  }
+}
+
+/* ===== Scene 3: Video ===== */
+.scene--video {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+
+  .video-wrapper {
+    position: absolute;
+    width: clamp(200px, 60vw, 60vh);
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+
+    &.pos-top-left {
+      top: 6%;
+      left: 6%;
+    }
+    &.pos-top-right {
+      top: 6%;
+      right: 6%;
+    }
+    &.pos-bottom-left {
+      bottom: 6%;
+      left: 6%;
+    }
+    &.pos-bottom-right {
+      bottom: 6%;
+      right: 6%;
+    }
+  }
+
+  #product-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .video-back {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 1.4rem;
+    line-height: 40px;
+    text-align: center;
+    color: #000;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* ===== Utility ===== */
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
