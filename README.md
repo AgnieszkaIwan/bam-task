@@ -1,5 +1,7 @@
 # Fictional Product Ad – Recruitment Task
 
+https://agnieszkaiwan.github.io/bam-task/
+
 Interactive mobile ad unit with three scenes (Intro → Gallery → Video).
 
 | Tech             | Why                                |
