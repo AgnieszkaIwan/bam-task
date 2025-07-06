@@ -6,7 +6,6 @@ import * as VideoScene from "../scenes/VideoScene.js";
 
 export default class SceneManager {
   constructor() {
-    /** map<sceneName, HTMLElement> */
     this.scenes = {
       intro: document.getElementById("scene-intro"),
       gallery: document.getElementById("scene-gallery"),
