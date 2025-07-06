@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile‑first viewport settings -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+
+    <title>Fictional Product Ad</title>
+
+    <link rel="stylesheet" href="/style.css" />
+    <script type="module" crossorigin src="/assets/index-C7ZcT4zH.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-4dUdGy_p.css">
+  </head>
+
+  <body>
+    <!-- Orientation‑lock overlay-->
+    <div id="orientation-lock" class="orientation-lock hidden">
+      <p>Please rotate your device to portrait orientation.</p>
+    </div>
+    <main id="app">
+      <!-- ───────────────────────── Scene 1: Intro ───────────────────────── -->
+      <section
+        id="scene-intro"
+        class="scene scene--intro is-active"
+        data-scene="intro"
+      >
+        <img src="/images/bg.jpg" alt="Background" class="scene-intro__bg" />
+        <img
+          src="/images/headline.png"
+          alt="Nagłówek produktu"
+          class="scene-intro__headline"
+        />
+      </section>
+      <!-- ───────────────────────── Scene 2: Gallery ──────────────────────── -->
+      <section
+        id="scene-gallery"
+        class="scene scene--gallery"
+        data-scene="gallery"
+      >
+        <div class="swiper">
+          <div class="swiper-button-prev" aria-label="Previous"></div>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" data-index="1">
+              <img src="/images/shoe1.png" alt="Product 1" />
+            </div>
+            <div class="swiper-slide" data-index="2">
+              <img src="/images/shoe2.png" alt="Product 2" />
+            </div>
+            <div class="swiper-slide" data-index="3">
+              <img src="/images/shoe3.png" alt="Product 3" />
+            </div>
+            <div class="swiper-slide" data-index="4">
+              <img src="/images/shoe4.png" alt="Product 4" />
+            </div>
+          </div>
+          <div class="swiper-button-next" aria-label="Next"></div>
+        </div>
+        <img
+          src="/images/shadow.png"
+          alt="Cień dekoracyjny"
+          class="gallery-shadow"
+        />
+
+        <button id="cta" class="cta" aria-label="Buy now">
+          <img src="/images/cta.png" alt="Call to Action" />
+        </button>
+      </section>
+      <!-- ───────────────────────── Scene 3: Video ────────────────────────── -->
+      <section id="scene-video" class="scene scene--video" data-scene="video">
+        <div id="video-wrapper" class="video-wrapper">
+          <video
+            id="product-video"
+            src="/video/video.mp4"
+            loop
+            muted
+            playsinline
+            preload="auto"
+          ></video>
+
+          <button
+            id="video-back"
+            class="video-back"
+            aria-label="back to gallery"
+          >
+            ✕
+          </button>
+        </div>
+      </section>
+    </main>
+
+  </body>
+</html>
