@@ -2,14 +2,13 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 
 export default defineConfig({
-  base: "/bam-task/",
-
-  root: ".",
-  publicDir: "public",
+  base: "/bam-task/", // ważne! dopasuj do nazwy repozytorium na GitHub Pages
+  root: ".", // katalog główny projektu
+  publicDir: "public", // folder na statyczne pliki (obrazy, video itd.)
 
   resolve: {
     alias: {
-      "@": resolve(__dirname, "src"),
+      "@": resolve(__dirname, "src"), // alias do folderu src
     },
   },
 
@@ -19,11 +18,10 @@ export default defineConfig({
     rollupOptions: {
       input: resolve(__dirname, "index.html"),
       output: {
-        entryFileNames: "bundle.js",
-        assetFileNames: ({ name }) => {
-          if (name && name.endsWith(".css")) return "style.css";
-          return "assets/[name]-[hash][extname]";
-        },
+        // Wszystkie pliki JS i CSS w folderze assets z hashami dla cache bustingu
+        entryFileNames: "assets/[name]-[hash].js",
+        chunkFileNames: "assets/[name]-[hash].js",
+        assetFileNames: "assets/[name]-[hash][extname]",
       },
     },
   },
